@@ -1,15 +1,24 @@
 {
+<<<<<<< HEAD
   "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+=======
+  "name": "dakar-dem-dikk-backend",
+  "version": "1.0.0",
+  "type": "module",
+>>>>>>> 48f4252 (Mise à jour finale du projet)
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
+<<<<<<< HEAD
   "keywords": [],
   "author": "",
   "license": "ISC",
+=======
+>>>>>>> 48f4252 (Mise à jour finale du projet)
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",

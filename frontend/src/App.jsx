@@ -4,6 +4,10 @@ import PublicHeader from './components/PublicHeader';
 import PublicHomepage from './components/PublicHomepage';
 import LoginForm from './components/LoginForm';
 import MainApp from './pages/MainApp';
+<<<<<<< HEAD
+=======
+import Chatbot from './components/Chatbot';
+>>>>>>> 48f4252 (Mise à jour finale du projet)
 
 function AppContent() {
   const { user, isLoading } = useAuth();
@@ -27,15 +31,29 @@ function AppContent() {
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-50">
+<<<<<<< HEAD
         <div>
           <PublicHeader onLoginClick={() => setShowLogin(true)} />
           <PublicHomepage onLoginClick={() => setShowLogin(true)} />
         </div>
+=======
+        <PublicHeader onLoginClick={() => setShowLogin(true)} />
+        <PublicHomepage onLoginClick={() => setShowLogin(true)} />
+>>>>>>> 48f4252 (Mise à jour finale du projet)
       </div>
     );
   }
 
+<<<<<<< HEAD
   return <MainApp />;
+=======
+  return (
+    <>
+      <MainApp />
+      <Chatbot />
+    </>
+  );
+>>>>>>> 48f4252 (Mise à jour finale du projet)
 }
 
 export default function App() {

@@ -8,7 +8,14 @@ import {
   BarChart3, 
   Bus,
   CreditCard,
+<<<<<<< HEAD
   User
+=======
+  User, 
+  Ticket,
+  Plane,
+  MessageCircle,
+>>>>>>> 48f4252 (Mise à jour finale du projet)
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -19,6 +26,12 @@ export default function Sidebar({ activeView, setActiveView, isOpen, onClose }) 
     const baseItems = [
       { id: 'dashboard', name: 'Tableau de bord', icon: Home },
       { id: 'tracking', name: 'Suivi en temps réel', icon: Map },
+<<<<<<< HEAD
+=======
+      { id: 'support', name: 'Support Client', icon: MessageCircle },
+      { id: 'abonnements', name: 'Abonnements', icon: Ticket },
+      { id: 'expressAIBD', name: 'Express AIBD', icon: Plane },
+>>>>>>> 48f4252 (Mise à jour finale du projet)
     ];
 
     if (user && user.role === 'admin') {
