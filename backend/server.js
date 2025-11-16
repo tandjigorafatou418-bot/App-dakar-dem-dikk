@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-// Importation des modules
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-
-// Configuration de l'environnement
-dotenv.config();
-
-// Création de l'application Express
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Route simple de test
-app.get("/", (req, res) => {
-  res.send("🚍 Serveur Dakar Dem Dikk en marche !");
-});
-
-// Définition du port (depuis .env ou par défaut 5000)
-const PORT = process.env.PORT || 5000;
-
-// Démarrage du serveur
-app.listen(PORT, () => {
-  console.log(`✅ Serveur en écoute sur le port ${PORT}`);
-});
-=======
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -186,6 +157,7 @@ let reservations = [
     createdAt: '2025-01-14T16:20:00Z'
   }
 ];
+
 let buses = [
   {
     id: '1',
@@ -215,6 +187,8 @@ let buses = [
     occupancy: 15
   }
 ];
+
+let supportMessages = [];
 
 // ==================== ROUTES API ====================
 
@@ -296,6 +270,69 @@ app.post('/api/auth/login', async (req, res) => {
     res.status(500).json({ 
       success: false,
       error: 'Erreur serveur lors de la connexion' 
+    });
+  }
+});
+
+// ==================== INSCRIPTION (REGISTER) ====================
+app.post('/api/auth/register', async (req, res) => {
+  try {
+    const { name, email, phone, password } = req.body;
+
+    console.log('📝 Tentative d\'inscription:', { name, email, phone });
+
+    // Validation
+    if (!name || !email || !phone || !password) {
+      return res.status(400).json({ 
+        success: false,
+        error: 'Tous les champs sont requis' 
+      });
+    }
+
+    // Vérifier si l'utilisateur existe déjà
+    const existingUser = users.find(u => u.email === email);
+    if (existingUser) {
+      return res.status(409).json({ 
+        success: false,
+        error: 'Un compte existe déjà avec cet email' 
+      });
+    }
+
+    // Créer le nouvel utilisateur
+    const newUser = {
+      id: `${Date.now()}`,
+      name,
+      email,
+      phone,
+      password, // En production, il faudrait hasher le mot de passe
+      role: 'client' // Par défaut, les nouveaux comptes sont des clients
+    };
+
+    users.push(newUser);
+
+    // Générer token JWT
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email, role: newUser.role },
+      process.env.JWT_SECRET || 'secret_key_demo_2025',
+      { expiresIn: '24h' }
+    );
+
+    // Retourner utilisateur sans mot de passe
+    const { password: _, ...userWithoutPassword } = newUser;
+    
+    console.log('✅ Inscription réussie:', userWithoutPassword.email);
+    
+    res.json({
+      success: true,
+      token,
+      user: userWithoutPassword
+    });
+
+  } catch (error) {
+    console.error('❌ Erreur inscription:', error);
+    res.status(500).json({ 
+      success: false,
+      error: 'Erreur serveur lors de l\'inscription' 
     });
   }
 });
@@ -410,28 +447,6 @@ app.get('/api/stats', (req, res) => {
   res.json({ success: true, stats });
 });
 
-// ==================== GESTION D'ERREURS ====================
-
-// Route 404
-app.use((req, res) => {
-  res.status(404).json({ 
-    success: false,
-    error: 'Route non trouvée',
-    path: req.path 
-  });
-});
-
-// Erreur serveur
-app.use((err, req, res, next) => {
-  console.error('💥 Erreur serveur:', err);
-  res.status(500).json({ 
-    success: false,
-    error: 'Erreur interne du serveur' 
-  });
-});
-
-let supportMessages = [];
-
 // ==================== SUPPORT CLIENT ====================
 
 // Envoyer un message support
@@ -473,6 +488,26 @@ app.get('/api/support/messages', (req, res) => {
   res.json({ success: true, messages: supportMessages });
 });
 
+// ==================== GESTION D'ERREURS ====================
+
+// Route 404
+app.use((req, res) => {
+  res.status(404).json({ 
+    success: false,
+    error: 'Route non trouvée',
+    path: req.path 
+  });
+});
+
+// Erreur serveur
+app.use((err, req, res, next) => {
+  console.error('💥 Erreur serveur:', err);
+  res.status(500).json({ 
+    success: false,
+    error: 'Erreur interne du serveur' 
+  });
+});
+
 // ==================== DÉMARRAGE SERVEUR ====================
 
 app.listen(PORT, () => {
@@ -488,4 +523,3 @@ app.listen(PORT, () => {
   console.log('   Client: client@dakardemlikk.sn / cli123');
   console.log('═'.repeat(50) + '\n');
 });
->>>>>>> 48f4252 (Mise à jour finale du projet)

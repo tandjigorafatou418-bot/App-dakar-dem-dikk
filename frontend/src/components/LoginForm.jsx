@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { Bus, Mail, Lock, Eye, EyeOff } from 'lucide-react';
-=======
 import { Bus, Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
->>>>>>> 48f4252 (Mise à jour finale du projet)
 import { useAuth } from '../contexts/AuthContext';
 
 export default function LoginForm({ onBack }) {
@@ -17,11 +13,6 @@ export default function LoginForm({ onBack }) {
     e.preventDefault();
     setError('');
     
-<<<<<<< HEAD
-    const success = await login(email, password);
-    if (!success) {
-      setError('Email ou mot de passe incorrect');
-=======
     console.log('Tentative connexion:', email, password);
     
     const result = await login(email, password);
@@ -29,21 +20,10 @@ export default function LoginForm({ onBack }) {
     if (!result.success) {
       setError(result.error || 'Email ou mot de passe incorrect');
       console.error('Échec connexion:', result.error);
->>>>>>> 48f4252 (Mise à jour finale du projet)
     }
   };
 
   const demoAccounts = [
-<<<<<<< HEAD
-    { role: 'Administrateur', email: 'admin@dakardemlikk.sn', password: 'admin123' },
-    { role: 'Agent', email: 'agent@dakardemlikk.sn', password: 'agent123' },
-    { role: 'Client', email: 'client@dakardemlikk.sn', password: 'client123' },
-  ];
-
-  const fillDemo = (email, password) => {
-    setEmail(email);
-    setPassword(password);
-=======
     { 
       role: 'Administrateur', 
       email: 'admin@dakardemlikk.sn', 
@@ -68,7 +48,6 @@ export default function LoginForm({ onBack }) {
     setEmail(demoEmail);
     setPassword(demoPassword);
     setError('');
->>>>>>> 48f4252 (Mise à jour finale du projet)
   };
 
   return (
@@ -84,27 +63,16 @@ export default function LoginForm({ onBack }) {
         </div>
 
         {/* Demo Accounts */}
-<<<<<<< HEAD
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <h3 className="text-sm font-semibold text-blue-900 mb-3">Comptes de démonstration:</h3>
-=======
         <div className="bg-gradient-to-r from-blue-50 to-emerald-50 border-2 border-blue-200 rounded-lg p-4 mb-6">
           <h3 className="text-sm font-bold text-blue-900 mb-3 flex items-center">
             <AlertCircle className="w-4 h-4 mr-2" />
             Comptes de démonstration
           </h3>
->>>>>>> 48f4252 (Mise à jour finale du projet)
           <div className="space-y-2">
             {demoAccounts.map((account, index) => (
               <button
                 key={index}
                 onClick={() => fillDemo(account.email, account.password)}
-<<<<<<< HEAD
-                className="w-full text-left p-2 rounded bg-white hover:bg-blue-50 border border-blue-200 transition-colors text-sm"
-              >
-                <div className="font-medium text-blue-900">{account.role}</div>
-                <div className="text-blue-700">{account.email}</div>
-=======
                 className={`w-full text-left p-3 rounded-lg border-2 transition-all ${account.color}`}
               >
                 <div className="font-bold text-gray-900 text-sm">{account.role}</div>
@@ -112,7 +80,6 @@ export default function LoginForm({ onBack }) {
                 <div className="text-xs text-gray-600 font-mono mt-1">
                   Mot de passe : <span className="font-bold">{account.password}</span>
                 </div>
->>>>>>> 48f4252 (Mise à jour finale du projet)
               </button>
             ))}
           </div>
@@ -122,14 +89,9 @@ export default function LoginForm({ onBack }) {
         <div className="bg-white rounded-xl shadow-lg p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-<<<<<<< HEAD
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-                {error}
-=======
               <div className="bg-red-50 border-2 border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm flex items-start">
                 <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
                 <span>{error}</span>
->>>>>>> 48f4252 (Mise à jour finale du projet)
               </div>
             )}
 
@@ -144,11 +106,7 @@ export default function LoginForm({ onBack }) {
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-<<<<<<< HEAD
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-=======
                   className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
->>>>>>> 48f4252 (Mise à jour finale du projet)
                   placeholder="votre@email.com"
                   required
                 />
@@ -166,11 +124,7 @@ export default function LoginForm({ onBack }) {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-<<<<<<< HEAD
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-=======
                   className="w-full pl-10 pr-12 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
->>>>>>> 48f4252 (Mise à jour finale du projet)
                   placeholder="Votre mot de passe"
                   required
                 />
@@ -204,24 +158,11 @@ export default function LoginForm({ onBack }) {
             {onBack && (
               <button
                 onClick={onBack}
-<<<<<<< HEAD
-                className="text-gray-600 hover:text-gray-700 font-medium mr-4"
-=======
                 className="text-gray-600 hover:text-gray-700 font-medium"
->>>>>>> 48f4252 (Mise à jour finale du projet)
               >
                 ← Retour à l'accueil
               </button>
             )}
-<<<<<<< HEAD
-            <p className="text-gray-600 text-sm">
-              Mot de passe oublié? 
-              <a href="#" className="text-emerald-600 hover:text-emerald-700 font-medium ml-1">
-                Réinitialiser
-              </a>
-            </p>
-=======
->>>>>>> 48f4252 (Mise à jour finale du projet)
           </div>
         </div>
 
@@ -234,8 +175,4 @@ export default function LoginForm({ onBack }) {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 48f4252 (Mise à jour finale du projet)

@@ -1,16 +1,4 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { 
-  Bus, Clock, MapPin, Phone, Mail, Star, Headphones, X, ArrowRight, 
-  Calendar, CreditCard, Map as MapIcon, UserPlus, Eye, EyeOff, Users 
-} from 'lucide-react';
-import { urbanRoutes, interurbanRoutes, urbanStations, interurbanStations } from '../data/stations';
-import StationsMap from './StationsMap';
-import LiveTracking from './LiveTracking';
-
-export default function PublicHomepage({ onLoginClick }) {
-  const [activeTab, setActiveTab] = useState('urban');
-=======
 import NewsSlider from './NewsSlider';
 import ExpressAIBD from './ExpressAIBD';
 import SocialMediaSidebar from './SocialMediaSidebar';
@@ -22,7 +10,6 @@ import {
 import { urbanRoutes, interurbanRoutes, urbanStations, interurbanStations } from '../data/stations';
 
 export default function PublicHomepage({ onLoginClick }) {
->>>>>>> 48f4252 (Mise à jour finale du projet)
   const [selectedSection, setSelectedSection] = useState('home');
   const [showSignupModal, setShowSignupModal] = useState(false);
   const [signupForm, setSignupForm] = useState({
@@ -48,47 +35,10 @@ export default function PublicHomepage({ onLoginClick }) {
     onLoginClick();
   };
 
-<<<<<<< HEAD
-  // ------------------------ RENDER FUNCTIONS ------------------------
-
-  const renderHome = () => (
-    <div className="space-y-12">
-      {/* Hero */}
-      <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 rounded-2xl text-white p-8 md:p-12">
-        <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Voyagez en toute simplicité avec Dakar Dem Dikk
-          </h1>
-          <p className="text-xl mb-8 text-emerald-100">
-            Réservez vos billets en ligne, suivez vos trajets en temps réel et profitez d'un transport moderne et confortable.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={handleReservationClick}
-              className="bg-white text-emerald-600 px-8 py-3 rounded-lg font-semibold hover:bg-emerald-50 transition-colors flex items-center justify-center space-x-2"
-            >
-              <Calendar className="w-5 h-5" />
-              <span>Réserver maintenant</span>
-            </button>
-            <button
-              onClick={() => setShowSignupModal(true)}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-emerald-600 transition-colors flex items-center justify-center space-x-2"
-            >
-              <UserPlus className="w-5 h-5" />
-              <span>Créer un compte</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Services */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-=======
   // ==================== SECTION ACCUEIL ====================
   const renderHome = () => (
     <div className="space-y-12">
-      {/* Slider d'actualités - REMPLACE LE BLOC GRIS */}
+      {/* Slider d'actualités */}
       <NewsSlider />
 
       {/* Express AIBD */}
@@ -97,7 +47,6 @@ export default function PublicHomepage({ onLoginClick }) {
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
->>>>>>> 48f4252 (Mise à jour finale du projet)
           <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
             <Bus className="w-8 h-8 text-blue-600" />
           </div>
@@ -114,11 +63,7 @@ export default function PublicHomepage({ onLoginClick }) {
           </button>
         </div>
 
-<<<<<<< HEAD
-        <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-=======
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
->>>>>>> 48f4252 (Mise à jour finale du projet)
           <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
             <MapPin className="w-8 h-8 text-emerald-600" />
           </div>
@@ -174,14 +119,6 @@ export default function PublicHomepage({ onLoginClick }) {
     </div>
   );
 
-<<<<<<< HEAD
-  const renderContent = () => {
-    switch (selectedSection) {
-      case 'schedules': return <div>Horaires...</div>;
-      case 'prices': return <div>Tarifs...</div>;
-      case 'stations': return <div>Stations...</div>;
-      case 'contact': return <div>Contact...</div>;
-=======
   // ==================== SECTION HORAIRES ====================
   const renderSchedules = () => (
     <div className="space-y-8">
@@ -565,26 +502,17 @@ export default function PublicHomepage({ onLoginClick }) {
       case 'prices': return renderPrices();
       case 'stations': return renderStations();
       case 'contact': return renderContact();
->>>>>>> 48f4252 (Mise à jour finale du projet)
       default: return renderHome();
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* 🆕 AJOUT : Barre latérale réseaux sociaux */}
+      <SocialMediaSidebar />
+
       {/* Navigation */}
-<<<<<<< HEAD
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-8 overflow-x-auto py-4">
-            {['home', 'schedules', 'prices', 'stations', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => setSelectedSection(section)}
-                className={`whitespace-nowrap pb-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-                  selectedSection === section
-=======
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+      <div className="bg-emerald-50 border-b border-emerald-200 sticky top-0 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex space-x-8 overflow-x-auto py-4">
             {[
@@ -599,20 +527,12 @@ export default function PublicHomepage({ onLoginClick }) {
                 onClick={() => setSelectedSection(section.id)}
                 className={`whitespace-nowrap pb-2 px-1 border-b-2 font-medium text-sm transition-colors flex items-center space-x-2 ${
                   selectedSection === section.id
->>>>>>> 48f4252 (Mise à jour finale du projet)
                     ? 'border-emerald-500 text-emerald-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
-<<<<<<< HEAD
-                {section === 'home' ? 'Accueil' :
-                 section === 'schedules' ? 'Horaires' :
-                 section === 'prices' ? 'Tarifs' :
-                 section === 'stations' ? 'Gares' : 'Contact'}
-=======
                 <section.icon className="w-4 h-4" />
                 <span>{section.label}</span>
->>>>>>> 48f4252 (Mise à jour finale du projet)
               </button>
             ))}
           </nav>
@@ -625,38 +545,6 @@ export default function PublicHomepage({ onLoginClick }) {
       </main>
 
       {/* Footer */}
-<<<<<<< HEAD
-      <footer className="bg-gray-900 text-gray-200 py-12">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h4 className="font-bold mb-4">Dakar Dem Dikk</h4>
-            <p>Transport moderne et fiable à travers le Sénégal.</p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Liens utiles</h4>
-            <ul className="space-y-2">
-              <li><button onClick={() => setSelectedSection('home')}>Accueil</button></li>
-              <li><button onClick={() => setSelectedSection('schedules')}>Horaires</button></li>
-              <li><button onClick={() => setSelectedSection('stations')}>Gares</button></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Contact</h4>
-            <p className="flex items-center space-x-2"><Phone className="w-4 h-4" /><span>+221 33 123 45 67</span></p>
-            <p className="flex items-center space-x-2"><Mail className="w-4 h-4" /><span>contact@dakkardem.com</span></p>
-          </div>
-          <div>
-            <h4 className="font-bold mb-4">Suivez-nous</h4>
-            <p>Facebook / Twitter / Instagram</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* Signup Modal */}
-      {showSignupModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-xl p-8 w-full max-w-md relative">
-=======
       <footer className="bg-gray-900 text-gray-200 py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -666,7 +554,7 @@ export default function PublicHomepage({ onLoginClick }) {
           <div>
             <h4 className="font-bold mb-4 text-white">Liens utiles</h4>
             <ul className="space-y-2 text-sm">
-              <li><button onClick={() => setSelectedSection('home')} className="hover:text-emerald-400">Accueil</button></li>
+              <li><button onClick={() => setSelectedSection('home')} className ="hover:text-emerald-400">Accueil</button></li>
               <li><button onClick={() => setSelectedSection('schedules')} className="hover:text-emerald-400">Horaires</button></li>
               <li><button onClick={() => setSelectedSection('stations')} className="hover:text-emerald-400">Gares</button></li>
             </ul>
@@ -696,16 +584,11 @@ export default function PublicHomepage({ onLoginClick }) {
       {showSignupModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <div className="bg-white rounded-xl p-8 w-full max-w-md relative max-h-[90vh] overflow-y-auto">
->>>>>>> 48f4252 (Mise à jour finale du projet)
             <button
               onClick={() => setShowSignupModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl"
             >
-<<<<<<< HEAD
-              <X className="w-5 h-5" />
-=======
               ✕
->>>>>>> 48f4252 (Mise à jour finale du projet)
             </button>
             <h2 className="text-2xl font-bold mb-6">Créer un compte</h2>
             <form className="space-y-4" onSubmit={handleSignup}>
@@ -715,11 +598,7 @@ export default function PublicHomepage({ onLoginClick }) {
                 required
                 value={signupForm.name}
                 onChange={(e) => setSignupForm({ ...signupForm, name: e.target.value })}
-<<<<<<< HEAD
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-=======
                 className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
->>>>>>> 48f4252 (Mise à jour finale du projet)
               />
               <input
                 type="email"
@@ -727,11 +606,7 @@ export default function PublicHomepage({ onLoginClick }) {
                 required
                 value={signupForm.email}
                 onChange={(e) => setSignupForm({ ...signupForm, email: e.target.value })}
-<<<<<<< HEAD
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-=======
                 className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
->>>>>>> 48f4252 (Mise à jour finale du projet)
               />
               <input
                 type="tel"
@@ -739,11 +614,7 @@ export default function PublicHomepage({ onLoginClick }) {
                 required
                 value={signupForm.phone}
                 onChange={(e) => setSignupForm({ ...signupForm, phone: e.target.value })}
-<<<<<<< HEAD
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-=======
                 className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
->>>>>>> 48f4252 (Mise à jour finale du projet)
               />
               <div className="relative">
                 <input
@@ -752,11 +623,7 @@ export default function PublicHomepage({ onLoginClick }) {
                   required
                   value={signupForm.password}
                   onChange={(e) => setSignupForm({ ...signupForm, password: e.target.value })}
-<<<<<<< HEAD
-                  className="w-full px-4 py-2 pr-12 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-=======
                   className="w-full px-4 py-2 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
->>>>>>> 48f4252 (Mise à jour finale du projet)
                 />
                 <button
                   type="button"
@@ -773,11 +640,7 @@ export default function PublicHomepage({ onLoginClick }) {
                   required
                   value={signupForm.confirmPassword}
                   onChange={(e) => setSignupForm({ ...signupForm, confirmPassword: e.target.value })}
-<<<<<<< HEAD
-                  className="w-full px-4 py-2 pr-12 border rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-=======
                   className="w-full px-4 py-2 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
->>>>>>> 48f4252 (Mise à jour finale du projet)
                 />
                 <button
                   type="button"
@@ -789,11 +652,7 @@ export default function PublicHomepage({ onLoginClick }) {
               </div>
               <button
                 type="submit"
-<<<<<<< HEAD
-                className="w-full bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-colors"
-=======
-                className="w-full bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
->>>>>>> 48f4252 (Mise à jour finale du projet)
+                className="w-full bg-emerald-600 text-white py-3 px-4 rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
               >
                 Créer un compte
               </button>
@@ -803,8 +662,4 @@ export default function PublicHomepage({ onLoginClick }) {
       )}
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 48f4252 (Mise à jour finale du projet)
